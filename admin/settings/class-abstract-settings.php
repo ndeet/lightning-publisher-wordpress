@@ -3,12 +3,11 @@
 // If this file is called directly, abort.
 defined('WPINC') || die;
 
-abstract class LNP_SettingsPage
+abstract class NLPW_SettingsPage
 {
     protected $settings_path;
     protected $template_html;
     protected $option_name;
-
     protected $tabs;
     protected $form_fields;
 
@@ -33,7 +32,6 @@ abstract class LNP_SettingsPage
         add_action('admin_init', array($this, 'init_fields'));
     }
 
-
     /**
      * Add Menu Item page
      */
@@ -48,7 +46,6 @@ abstract class LNP_SettingsPage
             array($this, 'renderer')
         );
     }
-
 
     /**
      * Add sections and fields to page
@@ -99,7 +96,6 @@ abstract class LNP_SettingsPage
         }
     }
 
-
     /**
      * Load options page HTML template
      */
@@ -116,7 +112,6 @@ abstract class LNP_SettingsPage
         include $this->get_template_path($this->template_html);
     }
 
-
     public function sanitize($inputs)
     {
         $new_input = array();
@@ -132,7 +127,6 @@ abstract class LNP_SettingsPage
 
         return $inputs;
     }
-
 
     public function get_field_value( $field )
     {
@@ -153,7 +147,6 @@ abstract class LNP_SettingsPage
         return $value;
     }
 
-
     /**
      * Get currently active tab from $_GET
      *
@@ -167,7 +160,6 @@ abstract class LNP_SettingsPage
             : key($this->tabs);
     }
 
-
     /**
      * Path to template file which will render options page
      *
@@ -179,18 +171,17 @@ abstract class LNP_SettingsPage
 
         $path = sprintf(
             '%s/admin/templates/%s',
-            BLN_PUBLISHER_ROOT_PATH,
+            NODELESSIO_PW_ROOT_PATH,
             $filename
         );
 
         // Notice to developer
         if (! file_exists($path) ) {
-            _e('Error: Settings template does not exist', 'lnp-alby');
+            _e('Error: Settings template does not exist', 'nodelessio-paywall');
         }
 
         return $path;
     }
-
 
     protected function get_page_title()
     {
@@ -202,14 +193,12 @@ abstract class LNP_SettingsPage
         return $this->menu_title;
     }
 
-
     protected function set_translations()
     {
     }
     protected function set_form_fields()
     {
     }
-
 
     /**
      * Load all options for current settings page from DB
@@ -231,7 +220,6 @@ abstract class LNP_SettingsPage
         $this->options = get_option($option_name, []);
     }
 
-
     /**
      * Check if user is on this settings page
      * Use this to fire page specific code
@@ -244,8 +232,6 @@ abstract class LNP_SettingsPage
             isset($_GET['page']) && strval(sanitize_text_field($_GET['page'])) == $this->settings_path
         );
     }
-
-
 
     public function add_admin_notice( $message = null, $type = 'info' )
     {
@@ -261,9 +247,6 @@ abstract class LNP_SettingsPage
             esc_html($message)
         );
     }
-
-
-
 
     /**
      * Display all sections from a page as tabs
@@ -311,7 +294,7 @@ abstract class LNP_SettingsPage
                 echo esc_html($args['description']);
             }
 
-            do_action("lnp_tab_before_{$id}");
+            do_action("nlpw_tab_before_{$id}");
 
             // Open Table
             echo '<table class="form-table" role="presentation">';
@@ -322,7 +305,7 @@ abstract class LNP_SettingsPage
             // Cloase table and tab
             echo '</table></div>';
 
-            do_action("lnp_tab_after_{$id}");
+            do_action("nlpw_tab_after_{$id}");
         }
     }
 

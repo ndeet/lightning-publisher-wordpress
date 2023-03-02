@@ -10,10 +10,10 @@ defined('WPINC') || die;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes
  */
-class BLN_Publisher_Loader
+class Nodeless_Paywall_Loader
 {
 
     /**

@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
 }
 
-.lnp-alby-donation-widget {
+.nlpw-donation-widget {
   width: 100%;
   height: 50px;
   display: block;
@@ -18,7 +18,7 @@
   position: relative;
 }
 
-.lnp-alby-donation-widget::after {
+.nlpw-donation-widget::after {
   width: 100%;
   height: 100%;
   font-size: 14px;

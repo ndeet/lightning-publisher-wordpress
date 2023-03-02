@@ -9,10 +9,10 @@ defined('WPINC') || die;
  * Defines the interfaces that are shared by the different client types
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes/clients
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes/clients
  */
-interface BLN_Publisher_Client_Interface
+interface Nodeless_Paywall_Client_Interface
 {
     public function addInvoice($params);
     public function getInvoice($params);

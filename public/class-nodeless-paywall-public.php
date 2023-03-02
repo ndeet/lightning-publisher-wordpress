@@ -11,10 +11,10 @@ defined('WPINC') || die;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/public
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/public
  */
-class BLN_Publisher_Public
+class Nodeless_Paywall_Public
 {
 
     /**
@@ -22,7 +22,7 @@ class BLN_Publisher_Public
      *
      * @since  1.0.0
      * @access private
-     * @var    BLN_Publisher    $plugin    The main plugin object.
+     * @var    Nodeless_Paywall    $plugin    The main plugin object.
      */
     private $plugin;
 
@@ -30,7 +30,7 @@ class BLN_Publisher_Public
      * Initialize the class and set its properties.
      *
      * @since 1.0.0
-     * @param BLN_Publisher $plugin The main plugin object.
+     * @param Nodeless_Paywall $plugin The main plugin object.
      */
     public function __construct($plugin)
     {
@@ -49,15 +49,15 @@ class BLN_Publisher_Public
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in BLN_Publisher_Loader as all of the hooks are defined
+         * defined in Nodeless_Paywall_Loader as all of the hooks are defined
          * in that particular class.
          *
-         * The BLN_Publisher_Loader will then create the relationship
+         * The Nodeless_Paywall_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
 
-        wp_enqueue_style($this->plugin->get_plugin_name(), plugin_dir_url(__FILE__) . 'css/bln-publisher-public.css', array(), $this->plugin->get_version(), 'all');
+        wp_enqueue_style($this->plugin->get_plugin_name(), plugin_dir_url(__FILE__) . 'css/nodeless-paywall-public.css', array(), $this->plugin->get_version(), 'all');
 
     }
 
@@ -69,13 +69,13 @@ class BLN_Publisher_Public
     public function enqueue_scripts()
     {
 
-        wp_enqueue_script($this->plugin->get_plugin_name(), plugin_dir_url(__FILE__) . 'js/bln-publisher-public.js', $this->plugin->get_version(), true);
+        wp_enqueue_script($this->plugin->get_plugin_name(), plugin_dir_url(__FILE__) . 'js/nodeless-paywall-public.js', $this->plugin->get_version(), true);
 
         wp_enqueue_script('bln-webln-button.js', plugin_dir_url(__FILE__) . 'js/bln-webln-button.js', $this->plugin->get_version(), true);
 
         wp_localize_script(
-            $this->plugin->get_plugin_name(), 'LN_Paywall', array(
-            'rest_base' => get_rest_url(null, '/lnp-alby/v1')
+            $this->plugin->get_plugin_name(), 'NL_Paywall', array(
+            'rest_base' => get_rest_url(null, '/nlpw/v1')
             )
         );
     }
@@ -100,19 +100,19 @@ class BLN_Publisher_Public
      */
     public function ln_paywall_filter($content)
     {
-        $paywall = new BLN_Publisher_Paywall($this->plugin, [ "content" => $content, "post_id" => get_the_ID()]);
+        $paywall = new Nodeless_Paywall_Paywall($this->plugin, [ "content" => $content, "post_id" => get_the_ID()]);
         return $paywall->get_content();
     }
 
     public function shortcodes_to_exempt_from_wptexturize()
     {
-      return array("lnpaywall", "ln_v4v", "ln_simple_boost");
+      return array("nlpaywall", "ln_v4v", "ln_simple_boost");
     }
 
     public function add_lnurl_to_rss_item_filter()
     {
         global $post;
-        $pay_url = get_rest_url(null, '/lnp-alby/v1/lnurlp');
+        $pay_url = get_rest_url(null, '/nlpw/v1/lnurlp');
         $lnurl = preg_replace('/^https?:\/\//', 'lnurlp://', $pay_url);
         echo '<payment:lnurl>' . esc_attr($lnurl) . '</payment:lnurl>';
     }
@@ -126,7 +126,7 @@ class BLN_Publisher_Public
             if (!empty($this->plugin->getGeneralOptions()['lnurl_meta_tag_lnurlp'])) {
                 $lnurl = $this->plugin->getGeneralOptions()['lnurl_meta_tag_lnurlp'];
             } else {
-                $lnurl = get_rest_url(null, '/lnp-alby/v1/lnurlp');
+                $lnurl = get_rest_url(null, '/nlpw/v1/lnurlp');
             }
             $lnurl_without_protocol = preg_replace('/^https?:\/\//', '', $lnurl);
             echo '<meta name="lightning" content="lnurlp:' . esc_attr($lnurl_without_protocol) . '" />';
@@ -174,7 +174,7 @@ class BLN_Publisher_Public
     {
         wp_enqueue_script('bln-js-modules/simple-boost.bundled.js', plugin_dir_url(__FILE__) . 'js/bln-js-modules/simple-boost.bundled.js', $this->plugin->get_version(), true);
 
-        $lnurl = get_rest_url(null, '/lnp-alby/v1/lnurlp');
+        $lnurl = get_rest_url(null, '/nlpw/v1/lnurlp');
         $attributes = shortcode_atts( array(
             'amount' => '1000',
             'currency' => 'btc',

@@ -3,21 +3,21 @@
 // If this file is called directly, abort.
 defined('WPINC') || die;
 
-class LNP_PaywallPage extends LNP_SettingsPage
+class NLPW_PaywallPage extends NLPW_SettingsPage
 {
-    protected $settings_path = 'lnp_settings_paywall';
+    protected $settings_path = 'nlpw_settings_paywall';
     protected $template_html = 'settings/page-paywall.php';
-    protected $option_name   = 'lnp_paywall';
+    protected $option_name   = 'nlpw_paywall';
 
     public function init_fields()
     {
         // Tabs
         $this->tabs   = array(
             'paywall' => array(
-                'title' => __('Paywall', 'lnp-alby'),
+                'title' => __('Paywall', 'nodelessio-paywall'),
             ),
             'advanced' => array(
-                'title' => __('Advanced', 'lnp-alby'),
+                'title' => __('Advanced', 'nodelessio-paywall'),
             ),
         );
 
@@ -31,8 +31,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Paywall Settings', 'lnp-alby');
-        $this->menu_title = __('Paywall Settings', 'lnp-alby');
+        $this->page_title = __('Paywall Settings', 'nodelessio-paywall');
+        $this->menu_title = __('Paywall Settings', 'nodelessio-paywall');
     }
 
 
@@ -55,8 +55,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'        => 'paywall_text',
-                'label'       => __( 'Text', 'lnp-alby' ),
-                'description' => __( 'Paywall text (use %s for the amount)', 'lnp-alby'),
+                'label'       => __( 'Text', 'nodelessio-paywall' ),
+                'description' => __( 'Paywall text (use %s for the amount)', 'nodelessio-paywall'),
             ),
         );
         */
@@ -65,8 +65,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'  => 'button_text',
-                'label' => __('Button label', 'lnp-alby'),
-                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'lnp-alby'),
+                'label' => __('Button label', 'nodelessio-paywall'),
+                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodelessio-paywall'),
             ),
         );
 
@@ -74,8 +74,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'  => 'description',
-                'label' => __('Description', 'lnp-alby'),
-                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'lnp-alby'),
+                'label' => __('Description', 'nodelessio-paywall'),
+                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodelessio-paywall'),
             ),
         );
 
@@ -84,8 +84,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'amount',
-                'label'       => __('Default amount', 'lnp-alby'),
-                'description' => __('Amount in smallest unit (e.g. cents/sats) per article', 'lnp-alby'),
+                'label'       => __('Default amount', 'nodelessio-paywall'),
+                'description' => __('Amount in smallest unit (e.g. cents/sats) per article', 'nodelessio-paywall'),
             ),
         );
 
@@ -93,8 +93,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'        => 'currency',
-                'label'       => __('Currency', 'lnp-alby'),
-                'description' => __('EUR, USD, GBP (default is BTC (sats))', 'lnp-alby'),
+                'label'       => __('Currency', 'nodelessio-paywall'),
+                'description' => __('EUR, USD, GBP (default is BTC (sats))', 'nodelessio-paywall'),
             ),
         );
 
@@ -107,8 +107,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'timeout',
-                'label'       => __('Timeout', 'lnp-alby'),
-                'description' => __('Disable the paywall X hours after the article is published.', 'lnp-alby'),
+                'label'       => __('Timeout', 'nodelessio-paywall'),
+                'description' => __('Disable the paywall X hours after the article is published.', 'nodelessio-paywall'),
             ),
         );
 
@@ -117,8 +117,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'timein',
-                'label'       => __('Timein', 'lnp-alby'),
-                'description' => __('Enable the paywall X hours after the article is published.', 'lnp-alby'),
+                'label'       => __('Timein', 'nodelessio-paywall'),
+                'description' => __('Enable the paywall X hours after the article is published.', 'nodelessio-paywall'),
             ),
         );
 
@@ -127,8 +127,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'total',
-                'label'       => __('Total', 'lnp-alby'),
-                'description' => __('Total amount to collect. After that amount is reached, the paywall will be disabled.', 'lnp-alby'),
+                'label'       => __('Total', 'nodelessio-paywall'),
+                'description' => __('Total amount to collect. After that amount is reached, the paywall will be disabled.', 'nodelessio-paywall'),
             ),
         );
 
@@ -138,8 +138,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
                 'type'        => 'checkbox',
                 'name'        => 'disable_in_rss',
                 'value'       => 'on',
-                'label'       => __('Disable paywall in RSS', 'lnp-alby'),
-                'description' => __('Disable paywall in RSS items / show full content in RSS.', 'lnp-alby'),
+                'label'       => __('Disable paywall in RSS', 'nodelessio-paywall'),
+                'description' => __('Disable paywall in RSS items / show full content in RSS.', 'nodelessio-paywall'),
             ),
         );
 
@@ -149,8 +149,8 @@ class LNP_PaywallPage extends LNP_SettingsPage
             'tab'     => 'integrations',
             'field'   => array(
                 'name'        => 'paywall_lnurl_rss',
-                'label'       => __( 'Add LNURL to RSS items', 'lnp-alby' ),
-                'description' => __( 'Add lightning payment details to RSS items', 'lnp-alby'),
+                'label'       => __( 'Add LNURL to RSS items', 'nodelessio-paywall' ),
+                'description' => __( 'Add lightning payment details to RSS items', 'nodelessio-paywall'),
             ),
         );
         */

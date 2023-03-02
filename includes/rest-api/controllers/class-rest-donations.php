@@ -10,13 +10,13 @@ defined('WPINC') || die;
  * @file
  * REST API Endpoint that handles donations
  */
-class LNP_DonationsController extends \WP_REST_Controller
+class NLPW_DonationsController extends \WP_REST_Controller
 {
 
     public function register_routes()
     {
 
-        $this->namespace = 'lnp-alby/v1';
+        $this->namespace = 'nlpw/v1';
         $this->rest_base = 'donate';
 
         register_rest_route(
@@ -62,13 +62,13 @@ class LNP_DonationsController extends \WP_REST_Controller
         // Don't allow less than 100 SATS
         if ($amount < 100 ) {
             ob_end_clean();
-            return new \WP_Error(__('Mimimum donation amount is 100 SATS', 'lnp-alby'));
+            return new \WP_Error(__('Mimimum donation amount is 100 SATS', 'nodelessio-paywall'));
         }
 
         // Don't allow less than 100 SATS
         if (! $post_id ) {
             ob_end_clean();
-            return new \WP_Error(__('Invalid Request, post_id missing', 'lnp-alby'));
+            return new \WP_Error(__('Invalid Request, post_id missing', 'nodelessio-paywall'));
         }
 
         $invoice  = $this->create_invoice($post_id, $amount);
@@ -112,7 +112,7 @@ class LNP_DonationsController extends \WP_REST_Controller
         try {
             $jwt = JWT\JWT::decode(
                 $token,
-                new JWT\Key(BLN_PUBLISHER_PAYWALL_JWT_KEY, BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM)
+                new JWT\Key(NODELESSIO_PW_PAYWALL_JWT_KEY, NODELESSIO_PW_PAYWALL_JWT_ALGORITHM)
             );
         }
         catch (\Exception $e) {
@@ -204,7 +204,7 @@ class LNP_DonationsController extends \WP_REST_Controller
             )
         );
 
-        $jwt = JWT\JWT::encode($jwt_data, BLN_PUBLISHER_PAYWALL_JWT_KEY,  BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM);
+        $jwt = JWT\JWT::encode($jwt_data, NODELESSIO_PW_PAYWALL_JWT_KEY,  NODELESSIO_PW_PAYWALL_JWT_ALGORITHM);
 
         $response = array_merge(
             $response_data,
@@ -251,7 +251,7 @@ class LNP_DonationsController extends \WP_REST_Controller
 
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Amount in SATS user wants to donate', 'lnp-alby'),
+            'description'       => __('Amount in SATS user wants to donate', 'nodelessio-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',
@@ -259,7 +259,7 @@ class LNP_DonationsController extends \WP_REST_Controller
 
         $params['post_id'] = array(
             'default'           => 0,
-            'description'       => __('Post where donation was made', 'lnp-alby'),
+            'description'       => __('Post where donation was made', 'nodelessio-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

@@ -3,10 +3,10 @@
 // If this file is called directly, abort.
 defined('WPINC') || die;
 
-class LNP_DonationPage extends LNP_SettingsPage
+class NLPW_DonationPage extends NLPW_SettingsPage
 {
-    protected $settings_path = 'lnp_settings_donation';
-    protected $option_name   = 'lnp_donation';
+    protected $settings_path = 'nlpw_settings_donation';
+    protected $option_name   = 'nlpw_donation';
     protected $template_html = 'settings/page-donation.php';
 
     public function init_fields()
@@ -14,10 +14,10 @@ class LNP_DonationPage extends LNP_SettingsPage
         // Tabs
         $this->tabs   = array(
             'integrations' => array(
-                'title' => __('Integrations', 'lnp-alby'),
+                'title' => __('Integrations', 'nodelessio-paywall'),
             ),
             'widget' => array(
-                'title' => __('Donation Widget', 'lnp-alby'),
+                'title' => __('Donation Widget', 'nodelessio-paywall'),
             ),
         );
 
@@ -30,8 +30,8 @@ class LNP_DonationPage extends LNP_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Donations Settings', 'lnp-alby');
-        $this->menu_title = __('Donations', 'lnp-alby');
+        $this->page_title = __('Donations Settings', 'nodelessio-paywall');
+        $this->menu_title = __('Donations', 'nodelessio-paywall');
     }
 
     /**
@@ -54,8 +54,8 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'        => 'checkbox_group',
                 'name'        => 'donations_enabled_for',
                 'options'     => $this->get_post_types(),
-                'label'       => __('Auto add donation box', 'lnp-alby'),
-                'description' => __('Enable this option to automatically append the donation block to the end of each post, for selected post type. You can still manually add the donation box with shortcode or Gutenberg block', 'lnp-alby'),
+                'label'       => __('Auto add donation box', 'nodelessio-paywall'),
+                'description' => __('Enable this option to automatically append the donation block to the end of each post, for selected post type. You can still manually add the donation box with shortcode or Gutenberg block', 'nodelessio-paywall'),
             ),
         );
 
@@ -67,12 +67,12 @@ class LNP_DonationPage extends LNP_SettingsPage
         $options   = array();
         $options[] = array(
             'value' => 'above',
-            'label' => __('Above content', 'lnp-alby'),
+            'label' => __('Above content', 'nodelessio-paywall'),
         );
 
         $options[] = array(
             'value' => 'below',
-            'label' => __('Below content', 'lnp-alby'),
+            'label' => __('Below content', 'nodelessio-paywall'),
         );
 
         $fields[] = array(
@@ -81,8 +81,8 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'        => 'checkbox_group',
                 'name'        => 'donations_autoadd',
                 'options'     => $options,
-                'label'       => __('Placement', 'lnp-alby'),
-                'description' => __('Where to add the donation box, if not selected the donation box will not be inserted automatically', 'lnp-alby'),
+                'label'       => __('Placement', 'nodelessio-paywall'),
+                'description' => __('Where to add the donation box, if not selected the donation box will not be inserted automatically', 'nodelessio-paywall'),
             ),
         );
 
@@ -93,7 +93,7 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'    => 'number',
                 'name'    => 'widget_amount',
                 'default' => 100000,
-                'label'   => __('Default amount in sats', 'lnp-alby'),
+                'label'   => __('Default amount in sats', 'nodelessio-paywall'),
             ),
         );
 
@@ -103,7 +103,7 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_title',
                 'default' => 'Show some love',
-                'label'   => __('Widget title', 'lnp-alby'),
+                'label'   => __('Widget title', 'nodelessio-paywall'),
             ),
         );
 
@@ -113,7 +113,7 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_description',
                 'default' => 'Support us by donating sats to keep us going',
-                'label'   => __('Widget description', 'lnp-alby'),
+                'label'   => __('Widget description', 'nodelessio-paywall'),
             ),
         );
 
@@ -123,8 +123,8 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'        => 'text',
                 'name'        => 'widget_thankyou',
                 'default'     => 'Woow, you are awesome! Thank you for your support!',
-                'label'       => __('Thank you message', 'lnp-alby'),
-                'description' => __('Will be displayed after payment is processed', 'lnp-alby'),
+                'label'       => __('Thank you message', 'nodelessio-paywall'),
+                'description' => __('Will be displayed after payment is processed', 'nodelessio-paywall'),
             ),
         );
 
@@ -134,7 +134,7 @@ class LNP_DonationPage extends LNP_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_button_label',
                 'default' => 'Donate now',
-                'label'   => __('Widget button label', 'lnp-alby'),
+                'label'   => __('Widget button label', 'nodelessio-paywall'),
             ),
         );
 

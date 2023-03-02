@@ -28,7 +28,7 @@ defined('WPINC') || die; ?>
                 echo esc_html($this->get_connected_wallet());
                 if (!$this->check_connection_valid()) {
                     ?>
-                    <br><a href="<?php echo admin_url('admin.php?page=lnp_settings_connections'); ?>">Setup your wallet</a>
+                    <br><a href="<?php echo admin_url('admin.php?page=nlpw_settings_connections'); ?>">Setup your wallet</a>
                     <?php
                 }
             ?>

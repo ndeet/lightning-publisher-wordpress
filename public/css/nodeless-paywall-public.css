@@ -40,26 +40,26 @@
     height: 20px;
 }
 
-.LNP_spinner {
-    animation: LNP_rotate 2s linear infinite;
+.NLPW_spinner {
+    animation: NLPW_rotate 2s linear infinite;
     z-index: 2;
     width: 20px;
     height: 20px;
 }
 
-.LNP_spinner .LNP_path {
+.NLPW_spinner .NLPW_path {
     stroke: black;
     stroke-linecap: round;
-    animation: LNP_dash 1.5s ease-in-out infinite;
+    animation: NLPW_dash 1.5s ease-in-out infinite;
 }
 
-@keyframes LNP_rotate {
+@keyframes NLPW_rotate {
     100% {
         transform: rotate(360deg);
     }
 }
 
-@keyframes LNP_dash {
+@keyframes NLPW_dash {
     0% {
         stroke-dasharray: 1, 150;
         stroke-dashoffset: 0;

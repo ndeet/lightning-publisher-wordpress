@@ -9,10 +9,10 @@ defined('WPINC') || die;
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes
  */
-class BLN_Publisher_Deactivator
+class Nodeless_Paywall_Deactivator
 {
 
     /**

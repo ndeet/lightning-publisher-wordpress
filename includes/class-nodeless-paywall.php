@@ -5,7 +5,7 @@ use \Firebase\JWT;
 // If this file is called directly, abort.
 defined('WPINC') || die;
 
-class BLN_Publisher
+class Nodeless_Paywall
 {
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
@@ -13,7 +13,7 @@ class BLN_Publisher
      *
      * @since  1.0.0
      * @access protected
-     * @var    BLN_Publisher_Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var    Nodeless_Paywall_Loader    $loader    Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
@@ -40,7 +40,7 @@ class BLN_Publisher
      *
      * @since  1.0.0
      * @access protected
-     * @var    BLN_Publisher_Client_Interface   $lightningClient    The lightning client.
+     * @var    Nodeless_Paywall_Client_Interface   $lightningClient    The lightning client.
      */
     protected $lightningClient;
 
@@ -58,7 +58,7 @@ class BLN_Publisher
      *
      * @since  1.0.0
      * @access protected
-     * @var    LNP_DatabaseHandler    $database_handler    The database handler.
+     * @var    NLPW_DatabaseHandler    $database_handler    The database handler.
      */
     protected $database_handler;
 
@@ -120,12 +120,12 @@ class BLN_Publisher
      */
     public function __construct()
     {
-        if (defined('BLN_PUBLISHER_VERSION')) {
-            $this->version = BLN_PUBLISHER_VERSION;
+        if (defined('NODELESSIO_PW_VERSION')) {
+            $this->version = NODELESSIO_PW_VERSION;
         } else {
             $this->version = '1.0.0';
         }
-        $this->plugin_name = 'bln-publisher';
+        $this->plugin_name = 'nodeless-paywall';
         $this->load_dependencies();
         $this->initialize_loader();
         $this->set_locale();
@@ -142,10 +142,10 @@ class BLN_Publisher
      *
      * Include the following files that make up the plugin:
      *
-     * - BLN_Publisher_Loader. Orchestrates the hooks of the plugin.
-     * - BLN_Publisher_i18n. Defines internationalization functionality.
-     * - BLN_Publisher_Admin. Defines all hooks for the admin area.
-     * - BLN_Publisher_Public. Defines all hooks for the public side of the site.
+     * - Nodeless_Paywall_Loader. Orchestrates the hooks of the plugin.
+     * - Nodeless_Paywall_i18n. Defines internationalization functionality.
+     * - Nodeless_Paywall_Admin. Defines all hooks for the admin area.
+     * - Nodeless_Paywall_Public. Defines all hooks for the public side of the site.
      *
      * Create an instance of the loader which will be used to register the hooks
      * with WordPress.
@@ -181,50 +181,46 @@ class BLN_Publisher
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-bln-publisher-loader.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-nodeless-paywall-loader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-bln-publisher-i18n.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-nodeless-paywall-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        include_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-bln-publisher-admin.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-nodeless-paywall-admin.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        include_once plugin_dir_path(dirname(__FILE__)) . 'public/class-bln-publisher-public.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'public/class-nodeless-paywall-public.php';
 
         /**
          * The lightning client classes.
          */
         include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/lightning-address.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/interface-bln-publisher-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/abstract-class-bln-publisher-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-bln-publisher-btcpay-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-bln-publisher-lnaddress-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-bln-publisher-lnbits-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-bln-publisher-lnd-client.php';
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-bln-publisher-lndhub-client.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/interface-nodeless-paywall-client.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/abstract-class-nodeless-paywall-client.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/clients/class-nodeless-paywall-nodeless-client.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-bln-publisher-paywall.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-nodeless-paywall-paywall.php';
 
         /**
          * The class responsible for REST API.
          */
         include_once plugin_dir_path(dirname(__FILE__)) . 'includes/rest-api/class-rest-server.php';
 
-        $this->plugin_admin = new BLN_Publisher_Admin($this);
-        $this->plugin_public = new BLN_Publisher_Public($this);
+        $this->plugin_admin = new Nodeless_Paywall_Admin($this);
+        $this->plugin_public = new Nodeless_Paywall_Public($this);
     }
 
     /**
@@ -232,13 +228,13 @@ class BLN_Publisher
      */
     private function initialize_loader()
     {
-        $this->loader = new BLN_Publisher_Loader();
+        $this->loader = new Nodeless_Paywall_Loader();
     }
 
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the BLN_Publisher_i18n class in order to set the domain and to register the hook
+     * Uses the Nodeless_Paywall_i18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @since  1.0.0
@@ -247,7 +243,7 @@ class BLN_Publisher
     private function set_locale()
     {
 
-        $plugin_i18n = new BLN_Publisher_i18n();
+        $plugin_i18n = new Nodeless_Paywall_i18n();
 
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
     }
@@ -261,15 +257,15 @@ class BLN_Publisher
     private function read_database_options()
     {
 
-        $this->database_handler = new LNP_DatabaseHandler();
+        $this->database_handler = new NLPW_DatabaseHandler();
 
-        $dashboard_page = new LNP_Dashboard($this, 'lnp_settings');
-        $balance_page = new LNP_BalancePage($this, 'lnp_settings', $this->database_handler);
-        $paywall_page    = new LNP_PaywallPage($this, 'lnp_settings');
-        $connection_page = new LNP_ConnectionPage($this, 'lnp_settings');
-        //$donation_page   = new LNP_DonationPage($this, 'lnp_settings');
-        $general_page   = new LNP_GeneralPage($this, 'lnp_settings');
-        $help_page = new LNP_HelpPage($this, 'lnp_settings');
+        $dashboard_page = new NLPW_Dashboard($this, 'nlpw_settings');
+        $balance_page = new NLPW_BalancePage($this, 'nlpw_settings', $this->database_handler);
+        $paywall_page    = new NLPW_PaywallPage($this, 'nlpw_settings');
+        $connection_page = new NLPW_ConnectionPage($this, 'nlpw_settings');
+        //$donation_page   = new NLPW_DonationPage($this, 'nlpw_settings');
+        $general_page   = new NLPW_GeneralPage($this, 'nlpw_settings');
+        $help_page = new NLPW_HelpPage($this, 'nlpw_settings');
 
         // get page options
         $this->connection_options = $connection_page->options;
@@ -292,24 +288,15 @@ class BLN_Publisher
 
         if (!$this->lightningClient) {
             try {
-                if (!empty($this->connection_options['lnd_address'])) {
-                    $this->lightningClientType = 'lnd';
-                    $this->lightningClient = new BLN_Publisher_LND_Client($this->connection_options);
-                } elseif (!empty($this->connection_options['lnbits_apikey'])) {
-                    $this->lightningClientType = 'lnbits';
-                    $this->lightningClient = new BLN_Publisher_LNBits_Client($this->connection_options);
-                } elseif (!empty($this->connection_options['lnaddress_address']) || !empty($this->connection_options['lnaddress_lnurl'])) {
-                    $this->lightningClientType = 'lnaddress';
-                    $this->lightningClient = new BLN_Publisher_LNAddress_Client($this->connection_options);
-                } elseif (!empty($this->connection_options['btcpay_host'])) {
+                if (!empty($this->connection_options['btcpay_host'])) {
                     $this->lightningClientType = 'btcpay';
-                    $this->lightningClient = new BLN_Publisher_BTCPay_Client($this->connection_options);
-                } elseif (!empty($this->connection_options['lndhub_url']) && !empty($this->connection_options['lndhub_login']) && !empty($this->connection_options['lndhub_password'])) {
-                    $this->lightningClientType = 'lndhub';
-                    $this->lightningClient = new BLN_Publisher_LNDHub_Client($this->connection_options);
+                    $this->lightningClient = new Nodeless_Paywall_BTCPay_Client($this->connection_options);
+                } elseif (!empty($this->connection_options['nodeless_host'])) {
+                    $this->lightningClientType = 'nodeless';
+                    $this->lightningClient = new Nodeless_Paywall_Nodeless_Client($this->connection_options);
                 }
             } catch (\Exception $e) {
-                echo "Faild to connect to Lightning Wallet: " . $e->getMessage();
+                echo "Failed to connect to Lightning Wallet: " . $e->getMessage();
             }
         }
     }
@@ -331,6 +318,8 @@ class BLN_Publisher
         $this->loader->add_action('admin_menu', $this->plugin_admin, 'lightning_menu');
         // Register the donation block
         $this->loader->add_action('init', $this->plugin_admin, 'init_gutenberg_blocks');
+        // Register node save hook
+        $this->loader->add_action('save_post', $this, 'ensure_nodeless_paywall_post');
     }
 
     /**
@@ -390,7 +379,7 @@ class BLN_Publisher
      */
     private function initialize_rest_api()
     {
-        $server = LNP_RESTServer::instance();
+        $server = NLPW_RESTServer::instance();
         $server->set_plugin_instance($this);
         $server->init();
     }
@@ -421,7 +410,7 @@ class BLN_Publisher
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since  1.0.0
-     * @return BLN_Publisher_Loader    Orchestrates the hooks of the plugin.
+     * @return Nodeless_Paywall_Loader    Orchestrates the hooks of the plugin.
      */
     public function get_loader()
     {
@@ -506,7 +495,7 @@ class BLN_Publisher
         if (empty($wplnp)) { return [];
         }
         try {
-            $jwt = JWT\JWT::decode($wplnp, new JWT\Key(BLN_PUBLISHER_PAYWALL_JWT_KEY, BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM));
+            $jwt = JWT\JWT::decode($wplnp, new JWT\Key(NODELESSIO_PW_PAYWALL_JWT_KEY, NODELESSIO_PW_PAYWALL_JWT_ALGORITHM));
             $paid_post_ids = $jwt->{'post_ids'};
             if (!is_array($paid_post_ids)) { return [];
             }
@@ -520,7 +509,7 @@ class BLN_Publisher
 
     public function has_paid_for_post($post_id)
     {
-        $paid_post_ids = BLN_Publisher::get_paid_post_ids();
+        $paid_post_ids = Nodeless_Paywall::get_paid_post_ids();
         return in_array($post_id, $paid_post_ids);
     }
 
@@ -531,7 +520,7 @@ class BLN_Publisher
      */
     public function save_as_paid($post_id, $amount_paid = 0)
     {
-        $paid_post_ids = BLN_Publisher::get_paid_post_ids();
+        $paid_post_ids = Nodeless_Paywall::get_paid_post_ids();
         if (!in_array($post_id, $paid_post_ids)) {
             $amount_received = get_post_meta($post_id, '_bln_amount_received', true);
             if (is_numeric($amount_received)) {
@@ -543,7 +532,7 @@ class BLN_Publisher
 
             array_push($paid_post_ids, $post_id);
         }
-        $jwt = JWT\JWT::encode(array('post_ids' => $paid_post_ids), BLN_PUBLISHER_PAYWALL_JWT_KEY, BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM);
+        $jwt = JWT\JWT::encode(array('post_ids' => $paid_post_ids), NODELESSIO_PW_PAYWALL_JWT_KEY, NODELESSIO_PW_PAYWALL_JWT_ALGORITHM);
         if (!empty($this->general_options["cookie_timeframe_days"])) {
             $days = intval($this->general_options["cookie_timeframe_days"]);
         } else {
@@ -592,4 +581,55 @@ class BLN_Publisher
         return ceil($amount_in_cents * $price_per_satoshi);
     }
 
+    function ensure_nodeless_paywall_post($post_id): void
+    {
+        $post = get_post($post_id);
+        // get the content of the post and apply the blocks
+        // this adds the "shortcode" to the content if the Gutenberg block is used
+        // the shortcode is then parsed in Nodeless_Paywall_Paywall with a regex
+        $content = do_blocks($post->post_content);
+
+        // Check if the content has the shortcode, abort otherwise.
+        if (!$this->has_shortcode($content)) {
+            return;
+        }
+
+        $paywall = new Nodeless_Paywall_Paywall($this, ['content' => $content, 'post_id' => $post_id]);
+        $paywall_options = $paywall->get_options();
+
+        $nlClient = $this->getLightningClient();
+        if (!$nlClient instanceof Nodeless_Paywall_Nodeless_Client) {
+            return;
+            // todo: log
+            // throw new \Exception("Can't process, only works with Nodeless_Paywall_Nodeless_Client");
+        }
+
+        $title = get_bloginfo('name') . ' - ' . get_the_title($post_id);
+        $amount = $paywall_options['amount'];
+        $currency = strtolower($paywall_options['currency']);
+        $sats = (int) $this->convert_to_sats($amount, $currency);
+
+        // Check if there is already a paywall.
+        if ($existingPaywallId = get_post_meta($post_id, NODELESSIO_PW_POST_META_PAYWALL_ID, true)) {
+            $paywall = $nlClient->getPaywallById($existingPaywallId);
+            // Check if the amount matches otherwise update it.
+            if ($sats !== $paywall->getPrice()) {
+                $nlClient->updatePaywall($paywall->getId(), $title, $sats);
+            }
+            return;
+        }
+
+        // Otherwise create a new paywall entry.
+        $newPaywall = $nlClient->createPaywall($title, $sats);
+        update_post_meta($post_id, NODELESSIO_PW_POST_META_PAYWALL_ID, $newPaywall->getId());
+    }
+
+    public function has_shortcode(string $content): bool
+    {
+        if (preg_match('/\[nlpaywall(.*)\]/i', $content, $m)) {
+            return true;
+        }
+
+        return false;
+    }
 }

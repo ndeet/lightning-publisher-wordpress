@@ -1,35 +1,16 @@
 {
-  "name": "getalby/bitcoin-lightning-publisher",
-  "description": "Bitcoin Lightning Publisher for WordPress - Lightning powered paywalls and donations for WordPress.",
+  "name": "nodeless-io/nodelessio-paywall",
+  "description": "Nodeless Paywall for WordPress - Lightning powered paywalls for WordPress.",
   "version": "1.0.1",
   "license": "MIT",
   "minimum-stability": "dev",
   "require": {
-    "octan/lnd-rest": "dev-master",
-    "octan/lnbits": "dev-master",
-    "octan/lndhub": "dev-main",
-    "octan/btcpay": "dev-main",
     "firebase/php-jwt": "dev-main",
     "jorijn/bitcoin-bolt11": "dev-master",
-    "tkijewski/php-lnurl": "dev-master"
+    "tkijewski/php-lnurl": "dev-master",
+    "nodeless-io/nodeless-php": "dev-paywall"
   },
   "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/bumi/lnd-php-rest"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/bumi/lnbits-php"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/bumi/lndhub-php"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/bumi/btcpay-php"
-    },
     {
       "type": "vcs",
       "url": "https://github.com/tkijewski/php-lnurl.git"

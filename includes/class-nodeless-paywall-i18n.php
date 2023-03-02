@@ -10,10 +10,10 @@ defined('WPINC') || die;
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes
  */
-class BLN_Publisher_i18n
+class Nodeless_Paywall_i18n
 {
 
 
@@ -26,7 +26,7 @@ class BLN_Publisher_i18n
     {
 
         load_plugin_textdomain(
-            'lnp-alby',
+            'nodelessio-paywall',
             false,
             dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
         );

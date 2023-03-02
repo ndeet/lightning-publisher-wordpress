@@ -9,7 +9,7 @@ defined('WPINC') || die;
  * Lightning Paywall Class to manage the paywall initialization on
  * a given content.
  *
- * When applied to a content, it searches for the [lnpaywall ] shortcode,
+ * When applied to a content, it searches for the [nlpaywall ] shortcode,
  * parses the available options provided in the shortcode,
  * merges the provided options with the database options
  * and separates the protected and public part of the content.
@@ -22,17 +22,17 @@ defined('WPINC') || die;
  * the full content or the teaser.
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes
  */
-class BLN_Publisher_Paywall
+class Nodeless_Paywall_Paywall
 {
     /**
      * Main Plugin.
      *
      * @since  1.0.0
      * @access private
-     * @var    BLN_Publisher    $plugin    The main plugin object.
+     * @var    Nodeless_Paywall    $plugin    The main plugin object.
      */
     private $plugin;
 
@@ -222,14 +222,14 @@ class BLN_Publisher_Paywall
     }
 
     /**
-     * Returns true if the content contains the lnpaywall shortcode
+     * Returns true if the content contains the nlpaywall shortcode
      *
      * @since  1.0.0
      * @return boolean true if the content contains the shortcode
      */
     protected function content_has_shortcode()
     {
-        if (preg_match('/\[lnpaywall(.*)\]/i', $this->content, $m)) {
+        if (preg_match('/\[nlpaywall(.*)\]/i', $this->content, $m)) {
             return true;
         } else {
             return false;
@@ -244,7 +244,7 @@ class BLN_Publisher_Paywall
      */
     protected function extract_options_from_shortcode()
     {
-        if (preg_match('/\[lnpaywall(.*)\]/i', $this->content, $m)) {
+        if (preg_match('/\[nlpaywall(.*)\]/i', $this->content, $m)) {
             $atts_string = $m[1];
             // wptexturize might replace the quotes in the shortcode we try to make this undone
             // maybe related: https://github.com/WordPress/gutenberg/issues/37754 + https://github.com/elementor/elementor/issues/9340
@@ -310,6 +310,6 @@ class BLN_Publisher_Paywall
      */
     protected function split_public_protected()
     {
-        list($this->teaser, $this->protected_content) = array_pad(preg_split('/(<p>)?\[lnpaywall.*\](<\/p>)?/', $this->content, 2), 2, null);
+        list($this->teaser, $this->protected_content) = array_pad(preg_split('/(<p>)?\[nlpaywall.*\](<\/p>)?/', $this->content, 2), 2, null);
     }
 }

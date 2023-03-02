@@ -10,13 +10,13 @@ defined('WPINC') || die;
  * @file
  * REST API Endpoint that handles lightning invoice creation and verification
  */
-class LNP_InvoicesController extends \WP_REST_Controller
+class NLPW_InvoicesController extends \WP_REST_Controller
 {
 
     public function register_routes()
     {
 
-        $this->namespace = 'lnp-alby/v1';
+        $this->namespace = 'nlpw/v1';
 
         register_rest_route(
             $this->namespace,
@@ -110,7 +110,7 @@ class LNP_InvoicesController extends \WP_REST_Controller
         // this is currently mainly used in the lightning address
         $invoice_id = empty($invoice['id']) ? $invoice['r_hash'] : $invoice['id'];
         $jwt_data = array_merge($response_data, ['invoice_id' => $invoice_id, 'r_hash' => $invoice['r_hash'], 'exp' => time() + 60 * 10]);
-        $jwt = JWT\JWT::encode($jwt_data, BLN_PUBLISHER_PAYWALL_JWT_KEY,  BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM);
+        $jwt = JWT\JWT::encode($jwt_data, NODELESSIO_PW_PAYWALL_JWT_KEY,  NODELESSIO_PW_PAYWALL_JWT_ALGORITHM);
 
         $response = array_merge($response_data, ['token' => $jwt, 'payment_request' => $invoice['payment_request']]);
 
@@ -135,7 +135,7 @@ class LNP_InvoicesController extends \WP_REST_Controller
             return wp_send_json(['settled' => false], 404);
         }
         try {
-            $jwt = JWT\JWT::decode($token, new JWT\Key(BLN_PUBLISHER_PAYWALL_JWT_KEY, BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM));
+            $jwt = JWT\JWT::decode($token, new JWT\Key(NODELESSIO_PW_PAYWALL_JWT_KEY, NODELESSIO_PW_PAYWALL_JWT_ALGORITHM));
         } catch (\Exception $e) {
             return wp_send_json(['settled' => false], 404);
         }
@@ -192,7 +192,7 @@ class LNP_InvoicesController extends \WP_REST_Controller
 
         $params['post_id'] = array(
             'default'           => 0,
-            'description'       => __('ID of the post that is requested for payment', 'lnp-alby'),
+            'description'       => __('ID of the post that is requested for payment', 'nodelessio-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',
@@ -200,7 +200,7 @@ class LNP_InvoicesController extends \WP_REST_Controller
 
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Invoice amount', 'lnp-alby'),
+            'description'       => __('Invoice amount', 'nodelessio-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

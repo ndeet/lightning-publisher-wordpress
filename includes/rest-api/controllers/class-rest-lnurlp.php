@@ -8,13 +8,13 @@ defined('WPINC') || die;
  * @file
  * REST API Endpoint to handle LNURL pay requests
  */
-class LNP_LnurlpController extends \WP_REST_Controller
+class NLPW_LnurlpController extends \WP_REST_Controller
 {
 
     public function register_routes()
     {
 
-        $this->namespace = 'lnp-alby/v1';
+        $this->namespace = 'nlpw/v1';
 
         register_rest_route(
             $this->namespace,
@@ -55,7 +55,7 @@ class LNP_LnurlpController extends \WP_REST_Controller
         //  $description = $description . ' - ' . get_the_title($post_id);
         //}
 
-        $callback_url = get_rest_url(null, '/lnp-alby/v1/lnurlp/callback');
+        $callback_url = get_rest_url(null, '/nlpw/v1/lnurlp/callback');
         $response = [
           'status' => 'OK',
           'callback' => $callback_url,
@@ -167,7 +167,7 @@ class LNP_LnurlpController extends \WP_REST_Controller
         $params = array();
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Invoice amount', 'lnp-alby'),
+            'description'       => __('Invoice amount', 'nodelessio-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

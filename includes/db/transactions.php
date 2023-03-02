@@ -8,7 +8,7 @@ if (!class_exists('WP_List_Table')) {
     include_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
-class LNP_TransactionsTable extends WP_List_Table
+class NLPW_TransactionsTable extends WP_List_Table
 {
     protected $database_handler;
 

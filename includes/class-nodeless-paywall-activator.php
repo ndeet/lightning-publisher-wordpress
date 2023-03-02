@@ -9,14 +9,14 @@ defined('WPINC') || die;
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes
  */
 
 // Custom Tables
 require_once 'db/database-handler.php';
 
-class BLN_Publisher_Activator
+class Nodeless_Paywall_Activator
 {
 
     /**
@@ -26,7 +26,7 @@ class BLN_Publisher_Activator
      */
     public static function activate()
     {
-        $database_handler = new LNP_DatabaseHandler();
+        $database_handler = new NLPW_DatabaseHandler();
         $database_handler->init();
     }
 

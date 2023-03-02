@@ -1,4 +1,4 @@
-=== Bitcoin Lightning Publisher for WordPress ===
+=== Nodeless Paywall for WordPress ===
 
 Tags: bitcoin, lightning, payment, donation, paywall, rss, micropayments
 Requires at least: 5.6.0
@@ -11,7 +11,7 @@ Contributors: getalby
 
 
 == Description ==
-Bitcoin Lightning Publisher is a Paywall, Donation and Value 4 Value plugin for WordPress to accept instant Bitcoin Lightning payments.
+Nodeless Paywall is a Paywall, Donation and Value 4 Value plugin for WordPress to accept instant Bitcoin Lightning payments.
 It allows you to monetize any digital content with instant microtransactions and receive payments from your visitors directly to your preferred wallet - no need for expensive service providers.
 
 The plugin is the easiest and most flexible plugin to sell your digital content and to receive donations or Value 4 Value payments.
@@ -51,7 +51,7 @@ Sell any digital content (pay-per-post, pay-per-view, pay-per-download, etc.) wi
 * Time-in option: keep the article freely available for a certain time and then enable the paywall after that
 * Time-out option: make the article freely available after a certain time
 * Configure the price in Satoshis, EUR, USD, or GBP (with real-time exchange rate)
-* Configure the paywall with a shortcode ([lnpaywall])
+* Configure the paywall with a shortcode ([nlpaywall])
 * Or configure the paywall with a Gutenberg Block
 * Integrate with other tools and plugins like membership tools to control if the paywall should be enabled (see Paywall Hook section)
 
@@ -107,7 +107,7 @@ Include shortcodes for Value 4 Value and donation buttons
 Use Alby API for currency rates
 
 = 1.1.2 =
-Fix issue with empty [lnpaywall] short code not being recognised
+Fix issue with empty [nlpaywall] short code not being recognised
 Remove ECAdapter dependency which has some issues on some hosting setups
 
 = 1.1.1 =

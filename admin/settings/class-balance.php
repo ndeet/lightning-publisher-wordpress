@@ -1,12 +1,12 @@
 <?php
 
-// If this file is called directly, abort.
+// If this file is called directly, abort. xxx
 defined('WPINC') || die;
 
-class LNP_BalancePage extends LNP_SettingsPage
+class NLPW_BalancePage extends NLPW_SettingsPage
 {
-    protected $settings_path = 'lnp_settings_balances';
-    protected $option_name   = 'lnp_paywall';
+    protected $settings_path = 'nlpw_settings_balances';
+    protected $option_name   = 'nlpw_paywall';
     protected $template_html = 'settings/page-balance.php';
 
     protected $database_handler;
@@ -23,7 +23,7 @@ class LNP_BalancePage extends LNP_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Transactions', 'lnp-alby');
-        $this->menu_title = __('Transactions', 'lnp-alby');
+        $this->page_title = __('Transactions', 'nodelessio-paywall');
+        $this->menu_title = __('Transactions', 'nodelessio-paywall');
     }
 }

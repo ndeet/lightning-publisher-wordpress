@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     (function () {
         var checkPaidInterval = null;
-        var wp_rest_base_url = LN_Paywall.rest_base;
-        var LN_Paywall_Spinner =
-        '<svg class="LNP_spinner" viewBox="0 0 50 50"><circle class="LNP_path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg>';
-        var LN_Paywall_Copy = '<svg xmlns="http://www.w3.org/2000/svg" class="LNP_copy" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path class="LNP_path" stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>';
+        var wp_rest_base_url = NL_Paywall.rest_base;
+        var NL_Paywall_Spinner =
+        '<svg class="NLPW_spinner" viewBox="0 0 50 50"><circle class="NLPW_path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg>';
+        var NL_Paywall_Copy = '<svg xmlns="http://www.w3.org/2000/svg" class="NLPW_copy" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path class="NLPW_path" stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>';
 
         function pay(invoice, options)
         {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     .sendPayment(invoice.payment_request)
                     .then(
                         (response) => {
-                            window.LNP_CURRENT_PREIMAGE =
+                            window.NLPW_CURRENT_PREIMAGE =
                             response.preimage || response.payment_preimage;
                         }
                     )
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         function stopWatchingForPayment()
         {
-            window.LNP_CURRENT_PREIMAGE = null;
+            window.NLPW_CURRENT_PREIMAGE = null;
             if (checkPaidInterval) {
                 clearTimeout(checkPaidInterval);
                 checkPaidInterval = null;
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             return function () {
                 let body = {
                     token: invoice.token,
-                    preimage: window.LNP_CURRENT_PREIMAGE,
+                    preimage: window.NLPW_CURRENT_PREIMAGE,
                     t: Date.now()
                 };
                 fetch(
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }"><img src="https://chart.googleapis.com/chart?&chld=M|0&cht=qr&chs=200x200&chl=${invoice.payment_request
             }"></a>
             <br />
-            <a href="lightning:${invoice.payment_request}">${invoice.payment_request.substr(0, 36)}...</a><span onClick="navigator.clipboard.writeText('${invoice.payment_request}');" class="wp-lnp-copy">${LN_Paywall_Copy}</span>
+            <a href="lightning:${invoice.payment_request}">${invoice.payment_request.substr(0, 36)}...</a><span onClick="navigator.clipboard.writeText('${invoice.payment_request}');" class="wp-lnp-copy">${NL_Paywall_Copy}</span>
             </div>`;
         }
 
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                             e.preventDefault();
                             this.setAttribute("disabled", "");
 
-                            this.innerHTML = LN_Paywall_Spinner;
+                            this.innerHTML = NL_Paywall_Spinner;
                             var wrapper = this.closest(".wp-lnp-wrapper");
 
                             requestPayment(

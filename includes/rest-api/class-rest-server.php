@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  * Class responsible for loading the REST API and all REST API namespaces.
  * Using singleton pattern
  */
-class LNP_RESTServer
+class NLPW_RESTServer
 {
     /**
      * The single instance of the class.
@@ -92,11 +92,11 @@ class LNP_RESTServer
          * filename => class name
          */
         $classes = array(
-            'class-rest-donations' => 'LNP_DonationsController',
-            'class-rest-paywall' => 'LNP_PaywallController',
-            'class-rest-invoices' => 'LNP_InvoicesController',
-            'class-rest-account' => 'LNP_AccountController',
-            'class-rest-lnurlp' => 'LNP_LnurlpController'
+            'class-rest-donations' => 'NLPW_DonationsController',
+            'class-rest-paywall' => 'NLPW_PaywallController',
+            'class-rest-invoices' => 'NLPW_InvoicesController',
+            'class-rest-account' => 'NLPW_AccountController',
+            'class-rest-lnurlp' => 'NLPW_LnurlpController'
         );
 
         foreach ( $classes as $file => $controller_class )
@@ -162,6 +162,6 @@ class LNP_RESTServer
      */
     final public function __wakeup()
     {
-        throw new Exception(__('Unserializing instances of this class is forbidden.', 'lnp-alby'));
+        throw new Exception(__('Unserializing instances of this class is forbidden.', 'nodelessio-paywall'));
     }
 }

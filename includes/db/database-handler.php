@@ -1,13 +1,13 @@
 <?php
 
-class LNP_DatabaseHandler
+class NLPW_DatabaseHandler
 {
     private $table_name;
 
     public function __construct()
     {
         global $wpdb;
-        $this->table_name = $wpdb->prefix . "lightning_publisher_payments";
+        $this->table_name = $wpdb->prefix . "nodeless_paywall_payments";
     }
 
     public function init()

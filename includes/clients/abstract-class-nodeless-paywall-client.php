@@ -7,10 +7,10 @@ defined('WPINC') || die;
  * Abstract LND Lightning Client.
  *
  * @since      1.0.0
- * @package    BLN_Publisher
- * @subpackage BLN_Publisher/includes/client
+ * @package    Nodeless_Paywall
+ * @subpackage Nodeless_Paywall/includes/client
  */
-abstract class Abstract_BLN_Publisher_Client implements BLN_Publisher_Client_Interface
+abstract class Abstract_Nodeless_Paywall_Client implements Nodeless_Paywall_Client_Interface
 {
 
     /**

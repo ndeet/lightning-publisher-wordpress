@@ -3,10 +3,10 @@
 // If this file is called directly, abort.
 defined('WPINC') || die;
 
-class LNP_Dashboard extends LNP_SettingsPage
+class NLPW_Dashboard extends NLPW_SettingsPage
 {
-    protected $settings_path = 'lnp_settings';
-    protected $option_name   = 'lnp_dashboard';
+    protected $settings_path = 'nlpw_settings';
+    protected $option_name   = 'NLPW_Dashboard';
     protected $template_html = 'settings/page-dashboard.php';
 
     /**
@@ -15,8 +15,8 @@ class LNP_Dashboard extends LNP_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Dashboard', 'lnp-alby');
-        $this->menu_title = __('Dashboard', 'lnp-alby');
+        $this->page_title = __('Dashboard', 'nodelessio-paywall');
+        $this->menu_title = __('Dashboard', 'nodelessio-paywall');
     }
 
     /**
@@ -57,19 +57,19 @@ class LNP_Dashboard extends LNP_SettingsPage
                 $node_info = $this->plugin->getLightningClient()->getInfo();
                 $message = sprintf(
                     '%s %s - %s',
-                    __('Connected to:', 'lnp-alby'),
+                    __('Connected to:', 'nodelessio-paywall'),
                     $node_info['alias'],
                     $node_info['identity_pubkey']
                 );
             }
             else {
-                $message = __('Wallet not connected', 'lnp-alby');
+                $message = __('Wallet not connected', 'nodelessio-paywall');
             }
             return $message;
         } catch (\Exception $e) {
             return sprintf(
                 '%s %s',
-                __('Connection Error', 'lnp-alby'),
+                __('Connection Error', 'nodelessio-paywall'),
                 $e
             );
         }

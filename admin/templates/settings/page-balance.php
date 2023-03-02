@@ -2,7 +2,7 @@
 
 // If this file is called directly, abort.
 defined('WPINC') || die;
-$table = new LNP_TransactionsTable($this->database_handler);
+$table = new NLPW_TransactionsTable($this->database_handler);
 
 ?>
 

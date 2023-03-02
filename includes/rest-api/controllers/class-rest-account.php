@@ -10,13 +10,13 @@ defined('WPINC') || die;
  * @file
  * REST API Endpoint to create/login to an Alby account
  */
-class LNP_AccountController extends \WP_REST_Controller
+class NLPW_AccountController extends \WP_REST_Controller
 {
 
     public function register_routes()
     {
 
-        $this->namespace = 'lnp-alby/v1';
+        $this->namespace = 'nlpw/v1';
 
         register_rest_route(
             $this->namespace,
@@ -36,7 +36,7 @@ class LNP_AccountController extends \WP_REST_Controller
         if (current_user_can('manage_options') || current_user_can('administrator')) {
             return true;
         }
-        return new \WP_Error('rest_forbidden', __('Invalid Request, Missing permissions', 'lnp-alby'), array( 'status' => 401 ));
+        return new \WP_Error('rest_forbidden', __('Invalid Request, Missing permissions', 'nodelessio-paywall'), array( 'status' => 401 ));
     }
 
     /**
@@ -51,19 +51,19 @@ class LNP_AccountController extends \WP_REST_Controller
         $password = $request->get_param('password');
         if (empty($password) || empty($email)) {
             ob_end_clean();
-            return new \WP_Error(__('Invalid Request, Missing required parameters', 'lnp-alby'));
+            return new \WP_Error(__('Invalid Request, Missing required parameters', 'nodelessio-paywall'));
         }
 
         try {
             $account = LNDHub\Client::createAlbyWallet($email, $password);
             if (!empty($account['lndhub']) && !empty($account['lndhub']['login'])) {
                 // update node keysend settings
-                $lnp_general = get_option('lnp_general');
-                if (empty($lnp_general['v4v_node_key'])) {
-                    $lnp_general['v4v_node_key'] = $account['keysend_pubkey'];
-                    $lnp_general['v4v_custom_key'] = $account['keysend_custom_key'];
-                    $lnp_general['v4v_custom_value'] = $account['keysend_custom_value'];
-                    update_option('lnp_general', $lnp_general);
+                $nlpw_general = get_option('nlpw_general');
+                if (empty($nlpw_general['v4v_node_key'])) {
+                    $nlpw_general['v4v_node_key'] = $account['keysend_pubkey'];
+                    $nlpw_general['v4v_custom_key'] = $account['keysend_custom_key'];
+                    $nlpw_general['v4v_custom_value'] = $account['keysend_custom_value'];
+                    update_option('nlpw_general', $nlpw_general);
                 }
                 ob_end_clean();
                 wp_send_json($account, 200);

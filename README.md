@@ -1,8 +1,8 @@
-# Bitcoin Lightning Publisher for WordPress
+# Nodeless Paywall for WordPress
 
 ![Lightning Publisher](/assets/banner.png)
 
-Bitcoin Lightning Publisher is a Paywall, Donation and Value 4 Value plugin for WordPress to accept instant Bitcoin Lightning payments.
+Nodeless Paywall is a Paywall, Donation and Value 4 Value plugin for WordPress to accept instant Bitcoin Lightning payments.
 It allows you to monetize any digital content with instant microtransactions and receive payments from your visitors directly to your preferred wallet - no need for expensive service providers.
 
 The plugin is the easiest and most flexible plugin to sell your digital content and to receive donations or Value 4 Value payments.
@@ -20,30 +20,9 @@ Sell any digital content (pay-per-post, pay-per-view, pay-per-download, etc.) wi
 * Time-in option: keep the article freely available for a certain time and then enable the paywall after that
 * Time-out option: make the article freely available after a certain time
 * Configure the price in Satoshis, EUR, USD, or GBP (with real-time exchange rate)
-* Configure the paywall with a shortcode (`[lnpaywall]`)
+* Configure the paywall with a shortcode (`[nlpaywall]`)
 * Or configure the paywall with a Gutenberg Block
 * Integrate with other tools and plugins like membership tools to control if the paywall should be enabled (see Paywall Hook section)
-
-
-#### Donation/Value4Value payments
-The plugin comes with various options to receive donations and [Value 4 Value payments](https://blog.getalby.com/the-case-for-value-4-value/).
-
-* Gutenberg block for a donation widget
-* Donation widget for themes
-* Enable Value 4 Value tags for your website and feeds:
-* Enable the [Lightning meta tag](https://github.com/BitcoinAndLightningLayerSpecs/rfc/issues/1) to allow users to send payments (Value 4 Value)
-* Enable the [`podcast:value` tag](https://github.com/Podcastindex-org/podcast-namespace/blob/main/value/value.md) in your RSS feed to receive payments for your podcast
-
-
-### Lightning Node connections
-Connect to your existing Bitcoin Lightning node or simply create a new [Alby account](https://getalby.com/) to instantly receive Lightning payments.
-
-* [Alby](https://getalby.com/)
-* [LND](https://github.com/lightningnetwork/lnd/)
-* [LNDHub](https://github.com/getalby/lndhub.go) (e.g. BlueWallet)
-* [LNBits](https://lnbits.com/)
-* [BTCPay Server](https://btcpayserver.org/)
-* [Lightning Address](https://lightningaddress.com/)
 
 
 ### REST-API for full advanced custom usage
@@ -57,9 +36,6 @@ For more advanced, custom Lightning integrations you can use the REST API to cre
 
 ## Demo
 
-Here quick Demo videos showing how to setup and use the plugin:
-+ [Quck Start - setup + paywall setup](https://www.loom.com/share/095b49a87e444442ac7b297f9483dfa7)
-+ [Admin Panel](https://www.loom.com/share/dbe501fe9d91445082a2c5c07a1a8ce8)
 
 ## Installation
 
@@ -70,13 +46,13 @@ Download the zip from the [latest release](https://github.com/getAlby/lightning-
 To build the plugin yourself: clone the repository and install the dependency using [Composer](https://getcomposer.org/)
 
 ```bash
-git clone https://github.com/getAlby/lightning-publisher-wordpress.git
-cd lightning-publisher-wordpress
+git clone https://github.com/nodeless-io/wordpress-paywall.git
+cd wordpress-paywall
 composer install # (maybe you need to add `--ignore-platform-reqs` if it asks you to update PHP)
 ```
 To build a .zip file of the WordPress plugin run:
 ```bash
-./build.sh # this builds a `wordpress-lightning-publisher.zip`
+./build.sh # this builds a `nodeless-paywall.zip`
 ```
 
 Then upload and activate the plugin through the WordPress Plugin admin panel.
@@ -131,7 +107,7 @@ function wp_bln_has_paid_for_post($show_full_content, $post_id) {
 
 ## Shortcode
 
-If you do not use the Gutenberg editor you can use the `[lnpaywall]` shortcode. The content after the shortcode will be behind the paywall.
+If you do not use the Gutenberg editor you can use the `[nlpaywall]` shortcode. The content after the shortcode will be behind the paywall.
 The following configuration options are possible:
 
 * amount
@@ -145,19 +121,19 @@ The following configuration options are possible:
 #### Example
 
 ```
-[lnpaywall amount=2121]
+[nlpaywall amount=2121]
 ```
 
 ## Plugin folder structure
 
 Folder structure is based on https://github.com/DevinVinson/WordPress-Plugin-Boilerplate
 
-- `bln-publisher.php` is the entrypoint of the plugin
+- `nodeless-paywall.php` is the entrypoint of the plugin
 - `includes` is where functionality shared between the admin area and the public-facing parts of the site reside
 - `admin` is for all admin-specific functionality
 - `public` is for all public-facing functionality
-- `includes/class-bln-publisher.php` is the main plugin class which handles including all the related classes.
-- `includes/class-bln-publisher-loader.php` is responsible for registering the action and filter hooks, and shortcodes.
+- `includes/class-nodeless-paywall.php` is the main plugin class which handles including all the related classes.
+- `includes/class-nodeless-paywall-loader.php` is responsible for registering the action and filter hooks, and shortcodes.
 
 ## REST API
 
@@ -165,7 +141,7 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 
 #### Initiate Payment for Paywall
 
-- URL: `/lnp-alby/v1/paywall/pay`
+- URL: `/nlpw/v1/paywall/pay`
 - Method: `POST`
 - Auth Required: No
 - Data example
@@ -178,7 +154,7 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 
 #### Verify Payment for Paywall
 
-- URL: `/lnp-alby/v1/paywall/verify`
+- URL: `/nlpw/v1/paywall/verify`
 - Method: `POST`
 - Auth Required: No
 - Data example
@@ -193,14 +169,14 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 
 #### LNURL-pay
 
-- URL: `/lnp-alby/v1/lnurlp`
+- URL: `/nlpw/v1/lnurlp`
 - Method: `GET`
 - Auth Required: No
 
 ```
 {
     "status":"OK",
-    "callback":"http:\/\/wp.play.getalby.com\/wp-json\/lnp-alby\/v1\/lnurlp\/callback",
+    "callback":"http:\/\/wp.play.getalby.com\/wp-json\/nlpw\/v1\/lnurlp\/callback",
     "minSendable":10000,
     "maxSendable":1000000000,
     "tag":"payRequest",
@@ -208,13 +184,13 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 }
 ```
 
-- URL: `/lnp-alby/v1/lnurlp/callback`
+- URL: `/nlpw/v1/lnurlp/callback`
 - Method: `GET`
 - Auth Required: No
 
 #### Initiate a general payment to generate an invoice
 
-- URL: `/lnp-alby/v1/invoices`
+- URL: `/nlpw/v1/invoices`
 - Method: `POST`
 - Auth Required: No
 - Data example
@@ -228,7 +204,7 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 
 #### Verify Payment for an invoice
 
-- URL: `/lnp-alby/v1/invoices/verify`
+- URL: `/nlpw/v1/invoices/verify`
 - Method: `POST`
 - Auth Required: No
 - Data example
