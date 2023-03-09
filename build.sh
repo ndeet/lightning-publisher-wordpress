@@ -1,7 +1,7 @@
 #!/bin/sh
 composer install --no-dev
-rm bitcoin-lightning-publisher.zip
-zip -r bitcoin-lightning-publisher.zip . --exclude='.git/*'
+rm nodelessio-paywall.zip
+zip -r nodelessio-paywall.zip . --exclude='.git/*'
 echo "Done"
 
 

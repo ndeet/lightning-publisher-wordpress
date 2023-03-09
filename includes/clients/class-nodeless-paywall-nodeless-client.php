@@ -29,23 +29,24 @@ class Nodeless_Paywall_Nodeless_Client extends Abstract_Nodeless_Paywall_Client
     {
         // Get the paywall id from the post.
         $paywallId = $this->getPaywallIdFromPost($params['post_id']);
+
         if (empty($paywallId)) {
             throw new \Exception('No paywall id found for post id: ' . $params['post_id']);
         }
 
         try {
+            $pwRequest = $this->client->createPaywallRequest(
+              $paywallId
+            );
 
-        $pwRequest = $this->client->createPaywallRequest(
-          $paywallId
-        );
-
-        // Mimic getAlby data structure.
-        return [
-          'id' => $pwRequest->getId(),
-          'r_hash' => $pwRequest->getId(),
-          'payment_request' => $pwRequest->getLightningInvoice()
-        ];
-
+            if (!empty($pwRequest)) {
+                // Mimic getAlby data structure.
+                return [
+                  'id' => $pwRequest->getId(),
+                  'r_hash' => $pwRequest->getId(),
+                  'payment_request' => $pwRequest->getLightningInvoice()
+                ];
+            }
         } catch (\Throwable $e) {
             //todo log "Failed to create paywall invoice: " . $e->getMessage();
             //wp_send_json_error(411);
@@ -154,49 +155,36 @@ class Nodeless_Paywall_Nodeless_Client extends Abstract_Nodeless_Paywall_Client
         return new NodelessIO\Client\PaywallClient($this->options['nodeless_host'], $this->options['nodeless_apikey']);
     }
 
-    public function getPaywallById($paywall_id): \NodelessIO\Response\PaywallResponse
+    public function getPaywallById($paywall_id): ?\NodelessIO\Response\PaywallResponse
     {
         $client = $this->getPaywallClient();
-        try {
-            $paywall = $client->getPaywall($paywall_id);
-            return $paywall;
-        } catch (\Throwable $e) {
-            //wp_send_json_error(411);
-        }
+        return $client->getPaywall($paywall_id);
     }
 
-    public function updatePaywall($paywall_id, $name, $price): \NodelessIO\Response\PaywallResponse
+    public function updatePaywall($paywall_id, $name, $price): ?\NodelessIO\Response\PaywallResponse
     {
         $client = $this->getPaywallClient();
-        try {
-            $paywall = $client->updatePaywall(
-              $paywall_id,
-              $name,
-              'wp_article',
-              $price,
-              ['foo' => 'bar']
-            );
+        $paywall = $client->updatePaywall(
+          $paywall_id,
+          $name,
+          'wp_article',
+          $price,
+          []
+        );
 
-            return $paywall;
-        } catch (\Throwable $e) {
-            //wp_send_json_error(411);
-        }
+        return $paywall;
     }
 
     public function createPaywall($name, $price): \NodelessIO\Response\PaywallResponse
     {
         $client = $this->getPaywallClient();
-        try {
-            $paywall = $client->createPaywall(
-              $name,
-              'wp_article',
-              $price,
-              ['foo' => 'bar']
-            );
+        $paywall = $client->createPaywall(
+          $name,
+          'wp_article',
+          $price,
+          []
+        );
 
-            return $paywall;
-        } catch (\Throwable $e) {
-            //wp_send_json_error(411);
-        }
+        return $paywall;
     }
 }

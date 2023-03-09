@@ -1,8 +1,8 @@
 # Nodeless Paywall for WordPress
 
-![Lightning Publisher](/assets/banner.png)
 
-Nodeless Paywall is a Paywall, Donation and Value 4 Value plugin for WordPress to accept instant Bitcoin Lightning payments.
+
+Nodeless Paywall is a plugin for WordPress to accept instant Bitcoin Lightning payments.
 It allows you to monetize any digital content with instant microtransactions and receive payments from your visitors directly to your preferred wallet - no need for expensive service providers.
 
 The plugin is the easiest and most flexible plugin to sell your digital content and to receive donations or Value 4 Value payments.
@@ -41,7 +41,7 @@ For more advanced, custom Lightning integrations you can use the REST API to cre
 
 Install from the WordPress [Plugin directory](https://wordpress.org/plugins/) or:
 
-Download the zip from the [latest release](https://github.com/getAlby/lightning-publisher-wordpress/releases/latest) and install/activate it through the WordPress Plugin admin panel.
+Download the zip from the [latest release](https://github.com/nodeless-io/wordpress-paywall/releases/latest) and install/activate it through the WordPress Plugin admin panel.
 
 To build the plugin yourself: clone the repository and install the dependency using [Composer](https://getcomposer.org/)
 
@@ -218,13 +218,17 @@ The plugin also provides a set of REST API Endpoints for handling payments and d
 
 ## Get support
 
-Do you need help? Create an issue or reach out to us: support[at]getalby.com
+Do you need help? Create an issue or reach out to us: support[at]nodeless.io
 
 
-## About Alby
+## About Nodeless.io
 
-This plugin is powered by [Alby](https://getalby.com/) - We create tools to rethink content monetization on the web.
+This plugin is powered by [nodeless.io](https://nodeless.io/).
 
 ## License
 
 GPL 3.0 (as WordPress)
+
+## Credits
+
+This is a fork of the brilliant [Bitcoin Lightning Publisher](https://github.com/getAlby/lightning-publisher-wordpress) plugin from [Alby](https://getalby.com).

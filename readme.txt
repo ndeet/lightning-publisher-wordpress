@@ -2,12 +2,11 @@
 
 Tags: bitcoin, lightning, payment, donation, paywall, rss, micropayments
 Requires at least: 5.6.0
-Tested up to: 6.0.1
-Requires PHP: 7.4
+Tested up to: 6.1.1
+Requires PHP: 8.0
 Stable tag: 1.2.3
 License: GPLv3
-Donate link: https://getalby.com
-Contributors: getalby
+Contributors: ndeet,nodeless
 
 
 == Description ==
@@ -92,43 +91,13 @@ For more advanced, custom Lightning integrations you can use the REST API to cre
 
 == Upgrade Notice ==
 
-= 1.2.3 =
-Fix conflict with Elementor plugin (better scope bln-js-modules filter)
-
-= 1.2.2 =
-Update dependencies with some performance improvements
-
-= 1.2.1 =
-Fully delete options on plugin uninstall
-Check Lightning Addresses on wallet configuration
-
-= 1.2.0 =
-Include shortcodes for Value 4 Value and donation buttons
-Use Alby API for currency rates
-
-= 1.1.2 =
-Fix issue with empty [nlpaywall] short code not being recognised
-Remove ECAdapter dependency which has some issues on some hosting setups
-
-= 1.1.1 =
-Maintenance update to fix version numbers
-
-= 1.1.0 =
-Add WebLN donation widget
-Add support for LNURL-verify (a proposal by Alby) to verify payments when connected to a Lightning Address
-Bugfix: use correct callback function name for the paywall check hook
-
-= 1.0.1 =
-Improve BTCPay Server connection
-
 = 1.0.0 =
 Initial release
 
 == Additional Info ==
 **Contributing**
 This plugin is free and open source. We welcome and appreciate new contributions.
-Visit the [code repository](https://github.com/getAlby/lightning-publisher-wordpress) and help us to improve the plugin.
+Visit the [code repository](https://github.com/nodeless-io/wordpress-paywall) and help us to improve the plugin.
 
-**Donations**
-Want to support the work on this plugin?
-Support the team behind it and send some sats to this Bitcoin Lightning Address hello@getalby.com
+**Credits**
+This plugin is a fork of the [Bitcoin Lightning Publisher plugin](https://github.com/getAlby/lightning-publisher-wordpress) from [Alby](https://getalby.com) but adjusted to be used with the Nodeless.io backend.

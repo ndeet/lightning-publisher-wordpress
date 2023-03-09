@@ -61,7 +61,7 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
                 'type'        => 'url',
                 'name'        => 'nodeless_host',
                 'label'       => __('Host', 'nodelessio-paywall'),
-                'description' => __('BTCPay Server Host (Greenfield API)', 'nodelessio-paywall'),
+                'description' => __('Nodeless.io host, will be replaced by Live/Testnet dropdown', 'nodelessio-paywall'),
             ),
         );
 
@@ -71,15 +71,6 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
                 'name'        => 'nodeless_apikey',
                 'label'       => __('API Key', 'nodelessio-paywall'),
                 'description' => __('Nodeless.io Api Key.', 'nodelessio-paywall'),
-            ),
-        );
-
-        $fields[] = array(
-            'tab'     => 'nodeless',
-            'field'   => array(
-                'name'        => 'nodeless_store_id',
-                'label'       => __('Store ID', 'nodelessio-paywall'),
-                'description' => __('Nodeless.io Store ID', 'nodelessio-paywall'),
             ),
         );
 
