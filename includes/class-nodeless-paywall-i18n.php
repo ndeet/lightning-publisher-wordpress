@@ -26,7 +26,7 @@ class Nodeless_Paywall_i18n
     {
 
         load_plugin_textdomain(
-            'nodelessio-paywall',
+            'nodeless-paywall',
             false,
             dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
         );

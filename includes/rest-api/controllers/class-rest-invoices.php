@@ -192,7 +192,7 @@ class NLPW_InvoicesController extends \WP_REST_Controller
 
         $params['post_id'] = array(
             'default'           => 0,
-            'description'       => __('ID of the post that is requested for payment', 'nodelessio-paywall'),
+            'description'       => __('ID of the post that is requested for payment', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',
@@ -200,7 +200,7 @@ class NLPW_InvoicesController extends \WP_REST_Controller
 
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Invoice amount', 'nodelessio-paywall'),
+            'description'       => __('Invoice amount', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

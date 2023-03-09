@@ -14,10 +14,10 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
         // Tabs
         $this->tabs   = array(
             'paywall' => array(
-                'title' => __('Paywall', 'nodelessio-paywall'),
+                'title' => __('Paywall', 'nodeless-paywall'),
             ),
             'advanced' => array(
-                'title' => __('Advanced', 'nodelessio-paywall'),
+                'title' => __('Advanced', 'nodeless-paywall'),
             ),
         );
 
@@ -31,8 +31,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Paywall Settings', 'nodelessio-paywall');
-        $this->menu_title = __('Paywall Settings', 'nodelessio-paywall');
+        $this->page_title = __('Paywall Settings', 'nodeless-paywall');
+        $this->menu_title = __('Paywall Settings', 'nodeless-paywall');
     }
 
 
@@ -55,8 +55,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'        => 'paywall_text',
-                'label'       => __( 'Text', 'nodelessio-paywall' ),
-                'description' => __( 'Paywall text (use %s for the amount)', 'nodelessio-paywall'),
+                'label'       => __( 'Text', 'nodeless-paywall' ),
+                'description' => __( 'Paywall text (use %s for the amount)', 'nodeless-paywall'),
             ),
         );
         */
@@ -65,8 +65,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'  => 'button_text',
-                'label' => __('Button label', 'nodelessio-paywall'),
-                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodelessio-paywall'),
+                'label' => __('Button label', 'nodeless-paywall'),
+                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodeless-paywall'),
             ),
         );
 
@@ -74,8 +74,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'  => 'description',
-                'label' => __('Description', 'nodelessio-paywall'),
-                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodelessio-paywall'),
+                'label' => __('Description', 'nodeless-paywall'),
+                'description' => __('You can use %{formatted_amount}, %{length}, %{currency}, %{amount}', 'nodeless-paywall'),
             ),
         );
 
@@ -84,8 +84,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'amount',
-                'label'       => __('Default amount', 'nodelessio-paywall'),
-                'description' => __('Amount in smallest unit (e.g. cents/sats) per article', 'nodelessio-paywall'),
+                'label'       => __('Default amount', 'nodeless-paywall'),
+                'description' => __('Amount in smallest unit (e.g. cents/sats) per article', 'nodeless-paywall'),
             ),
         );
 
@@ -93,8 +93,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'tab'     => 'paywall',
             'field'   => array(
                 'name'        => 'currency',
-                'label'       => __('Currency', 'nodelessio-paywall'),
-                'description' => __('EUR, USD, GBP (default is BTC (sats))', 'nodelessio-paywall'),
+                'label'       => __('Currency', 'nodeless-paywall'),
+                'description' => __('EUR, USD, GBP (default is BTC (sats))', 'nodeless-paywall'),
             ),
         );
 
@@ -107,8 +107,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'timeout',
-                'label'       => __('Timeout', 'nodelessio-paywall'),
-                'description' => __('Disable the paywall X hours after the article is published.', 'nodelessio-paywall'),
+                'label'       => __('Timeout', 'nodeless-paywall'),
+                'description' => __('Disable the paywall X hours after the article is published.', 'nodeless-paywall'),
             ),
         );
 
@@ -117,8 +117,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'timein',
-                'label'       => __('Timein', 'nodelessio-paywall'),
-                'description' => __('Enable the paywall X hours after the article is published.', 'nodelessio-paywall'),
+                'label'       => __('Timein', 'nodeless-paywall'),
+                'description' => __('Enable the paywall X hours after the article is published.', 'nodeless-paywall'),
             ),
         );
 
@@ -127,8 +127,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'field'   => array(
                 'type'        => 'number',
                 'name'        => 'total',
-                'label'       => __('Total', 'nodelessio-paywall'),
-                'description' => __('Total amount to collect. After that amount is reached, the paywall will be disabled.', 'nodelessio-paywall'),
+                'label'       => __('Total', 'nodeless-paywall'),
+                'description' => __('Total amount to collect. After that amount is reached, the paywall will be disabled.', 'nodeless-paywall'),
             ),
         );
 
@@ -138,8 +138,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
                 'type'        => 'checkbox',
                 'name'        => 'disable_in_rss',
                 'value'       => 'on',
-                'label'       => __('Disable paywall in RSS', 'nodelessio-paywall'),
-                'description' => __('Disable paywall in RSS items / show full content in RSS.', 'nodelessio-paywall'),
+                'label'       => __('Disable paywall in RSS', 'nodeless-paywall'),
+                'description' => __('Disable paywall in RSS items / show full content in RSS.', 'nodeless-paywall'),
             ),
         );
 
@@ -149,8 +149,8 @@ class NLPW_PaywallPage extends NLPW_SettingsPage
             'tab'     => 'integrations',
             'field'   => array(
                 'name'        => 'paywall_lnurl_rss',
-                'label'       => __( 'Add LNURL to RSS items', 'nodelessio-paywall' ),
-                'description' => __( 'Add lightning payment details to RSS items', 'nodelessio-paywall'),
+                'label'       => __( 'Add LNURL to RSS items', 'nodeless-paywall' ),
+                'description' => __( 'Add lightning payment details to RSS items', 'nodeless-paywall'),
             ),
         );
         */

@@ -23,7 +23,7 @@ class NLPW_BalancePage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Transactions', 'nodelessio-paywall');
-        $this->menu_title = __('Transactions', 'nodelessio-paywall');
+        $this->page_title = __('Transactions', 'nodeless-paywall');
+        $this->menu_title = __('Transactions', 'nodeless-paywall');
     }
 }

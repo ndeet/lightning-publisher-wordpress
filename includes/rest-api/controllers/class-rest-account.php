@@ -36,7 +36,7 @@ class NLPW_AccountController extends \WP_REST_Controller
         if (current_user_can('manage_options') || current_user_can('administrator')) {
             return true;
         }
-        return new \WP_Error('rest_forbidden', __('Invalid Request, Missing permissions', 'nodelessio-paywall'), array( 'status' => 401 ));
+        return new \WP_Error('rest_forbidden', __('Invalid Request, Missing permissions', 'nodeless-paywall'), array( 'status' => 401 ));
     }
 
     /**
@@ -51,7 +51,7 @@ class NLPW_AccountController extends \WP_REST_Controller
         $password = $request->get_param('password');
         if (empty($password) || empty($email)) {
             ob_end_clean();
-            return new \WP_Error(__('Invalid Request, Missing required parameters', 'nodelessio-paywall'));
+            return new \WP_Error(__('Invalid Request, Missing required parameters', 'nodeless-paywall'));
         }
 
         try {

@@ -15,8 +15,8 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Connection Settings', 'nodelessio-paywall');
-        $this->menu_title = __('Connection Settings', 'nodelessio-paywall');
+        $this->page_title = __('Connection Settings', 'nodeless-paywall');
+        $this->menu_title = __('Connection Settings', 'nodeless-paywall');
 
         add_action('admin_notices', array($this, 'get_ln_node_info'));
     }
@@ -32,8 +32,8 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
         // Tabs
         $this->tabs = array(
             'nodeless' => array(
-                'title'       => __('Nodeless.io', 'nodelessio-paywall'),
-                'description' => __('Connect to Nodeless.io.', 'nodelessio-paywall'),
+                'title'       => __('Nodeless.io', 'nodeless-paywall'),
+                'description' => __('Connect to Nodeless.io.', 'nodeless-paywall'),
             ),
         );
 
@@ -60,8 +60,8 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
             'field'   => array(
                 'type'        => 'url',
                 'name'        => 'nodeless_host',
-                'label'       => __('Host', 'nodelessio-paywall'),
-                'description' => __('Nodeless.io host, will be replaced by Live/Testnet dropdown', 'nodelessio-paywall'),
+                'label'       => __('Host', 'nodeless-paywall'),
+                'description' => __('Nodeless.io host, will be replaced by Live/Testnet dropdown', 'nodeless-paywall'),
             ),
         );
 
@@ -69,8 +69,8 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
             'tab'     => 'nodeless',
             'field'   => array(
                 'name'        => 'nodeless_apikey',
-                'label'       => __('API Key', 'nodelessio-paywall'),
-                'description' => __('Nodeless.io Api Key.', 'nodelessio-paywall'),
+                'label'       => __('API Key', 'nodeless-paywall'),
+                'description' => __('Nodeless.io Api Key.', 'nodeless-paywall'),
             ),
         );
 
@@ -96,7 +96,7 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
                 $type    = 'notice';
                 $message = sprintf(
                     '%s %s - %s',
-                    __('Connected to:', 'nodelessio-paywall'),
+                    __('Connected to:', 'nodeless-paywall'),
                     $node_info['alias'],
                     $node_info['identity_pubkey']
                 );
@@ -104,7 +104,7 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
             else {
 
                 $type    = 'error';
-                $message = __('Wallet not connected', 'nodelessio-paywall');
+                $message = __('Wallet not connected', 'nodeless-paywall');
             }
         }
         catch (\Exception $e) {
@@ -112,7 +112,7 @@ class NLPW_ConnectionPage extends NLPW_SettingsPage
             $type    = 'error';
             $message = sprintf(
                 '%s %s',
-                __('Connection Error, please check log for details', 'nodelessio-paywall'),
+                __('Connection Error, please check log for details', 'nodeless-paywall'),
                 $e
             );
         }

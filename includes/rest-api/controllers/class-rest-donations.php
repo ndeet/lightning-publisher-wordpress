@@ -62,13 +62,13 @@ class NLPW_DonationsController extends \WP_REST_Controller
         // Don't allow less than 100 SATS
         if ($amount < 100 ) {
             ob_end_clean();
-            return new \WP_Error(__('Mimimum donation amount is 100 SATS', 'nodelessio-paywall'));
+            return new \WP_Error(__('Mimimum donation amount is 100 SATS', 'nodeless-paywall'));
         }
 
         // Don't allow less than 100 SATS
         if (! $post_id ) {
             ob_end_clean();
-            return new \WP_Error(__('Invalid Request, post_id missing', 'nodelessio-paywall'));
+            return new \WP_Error(__('Invalid Request, post_id missing', 'nodeless-paywall'));
         }
 
         $invoice  = $this->create_invoice($post_id, $amount);
@@ -251,7 +251,7 @@ class NLPW_DonationsController extends \WP_REST_Controller
 
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Amount in SATS user wants to donate', 'nodelessio-paywall'),
+            'description'       => __('Amount in SATS user wants to donate', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',
@@ -259,7 +259,7 @@ class NLPW_DonationsController extends \WP_REST_Controller
 
         $params['post_id'] = array(
             'default'           => 0,
-            'description'       => __('Post where donation was made', 'nodelessio-paywall'),
+            'description'       => __('Post where donation was made', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

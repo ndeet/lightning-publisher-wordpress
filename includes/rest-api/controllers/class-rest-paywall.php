@@ -58,7 +58,7 @@ class NLPW_PaywallController extends \WP_REST_Controller
         $post_id = intval($request->get_param('post_id'));
 
         if (empty($post_id)) {
-            return new \WP_Error(__('Invalid Request, Missing required parameters', 'nodelessio-paywall'));
+            return new \WP_Error(__('Invalid Request, Missing required parameters', 'nodeless-paywall'));
         }
 
         $post = get_post($post_id);
@@ -215,7 +215,7 @@ class NLPW_PaywallController extends \WP_REST_Controller
 
         $params['post_id'] = array(
             'default'           => 0,
-            'description'       => __('ID of the post that is requested for payment', 'nodelessio-paywall'),
+            'description'       => __('ID of the post that is requested for payment', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

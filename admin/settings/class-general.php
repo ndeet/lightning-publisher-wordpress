@@ -15,10 +15,10 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
         $this->tabs   = array(
           /* disabled for now
             'value4value' => array(
-                'title' => __('Value 4 Value', 'nodelessio-paywall'),
+                'title' => __('Value 4 Value', 'nodeless-paywall'),
             ), */
             'general' => array(
-                'title' => __('General', 'nodelessio-paywall'),
+                'title' => __('General', 'nodeless-paywall'),
             ),
         );
         parent::init_fields();
@@ -31,8 +31,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('General Settings', 'nodelessio-paywall');
-        $this->menu_title = __('General Settings', 'nodelessio-paywall');
+        $this->page_title = __('General Settings', 'nodeless-paywall');
+        $this->menu_title = __('General Settings', 'nodeless-paywall');
     }
 
 
@@ -54,8 +54,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
                 'type'  => 'checkbox',
                 'name'  => 'lnurl_meta_tag',
                 'value' => 'on',
-                'label' => __('Enable Value 4 Value Lightning meta tag', 'nodelessio-paywall'),
-                'description' => __('Enable the Lightning metatag which allows visitors to send sats to your page', 'nodelessio-paywall'),
+                'label' => __('Enable Value 4 Value Lightning meta tag', 'nodeless-paywall'),
+                'description' => __('Enable the Lightning metatag which allows visitors to send sats to your page', 'nodeless-paywall'),
             ),
         );
 
@@ -63,8 +63,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
             'tab'     => 'value4value',
             'field'   => array(
                 'name'  => 'lnurl_meta_tag_lnurlp',
-                'label' => __('Custom recipient for the Lightning meta tag', 'nodelessio-paywall'),
-                'description' => __('By default the connected wallet is used to generate the meta tag. You can overwrite this here for example with your Lightning Address.', 'nodelessio-paywall'),
+                'label' => __('Custom recipient for the Lightning meta tag', 'nodeless-paywall'),
+                'description' => __('By default the connected wallet is used to generate the meta tag. You can overwrite this here for example with your Lightning Address.', 'nodeless-paywall'),
             ),
         );
 
@@ -74,8 +74,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
                 'type'  => 'checkbox',
                 'name'  => 'add_v4v_rss_tag',
                 'value' => 'on',
-                'label' => __('Enable Value 4 Value tag', 'nodelessio-paywall'),
-                'description' => __('Add the podcast:value tag to your RSS feed. Configure the node address (and custom key/value if needed).', 'nodelessio-paywall'),
+                'label' => __('Enable Value 4 Value tag', 'nodeless-paywall'),
+                'description' => __('Add the podcast:value tag to your RSS feed. Configure the node address (and custom key/value if needed).', 'nodeless-paywall'),
             ),
         );
 
@@ -83,8 +83,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
             'tab'     => 'value4value',
             'field'   => array(
                 'name'  => 'v4v_node_key',
-                'label' => __('Node Address', 'nodelessio-paywall'),
-                'description' => __('Node address - the Lightning node public key', 'nodelessio-paywall'),
+                'label' => __('Node Address', 'nodeless-paywall'),
+                'description' => __('Node address - the Lightning node public key', 'nodeless-paywall'),
             ),
         );
 
@@ -92,14 +92,14 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
             'tab'     => 'value4value',
             'field'   => array(
                 'name'  => 'v4v_custom_key',
-                'label' => __('Custom Key', 'nodelessio-paywall'),
+                'label' => __('Custom Key', 'nodeless-paywall'),
             ),
         );
         $fields[] = array(
             'tab'     => 'value4value',
             'field'   => array(
                 'name'  => 'v4v_custom_value',
-                'label' => __('Custom Value', 'nodelessio-paywall'),
+                'label' => __('Custom Value', 'nodeless-paywall'),
             ),
         );
         $fields[] = array(
@@ -108,8 +108,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
                 'type'  => 'checkbox',
                 'name'  => 'disable_add_v4v_rss_ns_tag',
                 'value' => 'on',
-                'label' => __('Disable podcast namespace injection', 'nodelessio-paywall'),
-                'description' => __('Do not auto-inject the podcast namespace. Some other plugins (like Seriously Simple Podcasting) might do this already which then might causes errors.', 'nodelessio-paywall'),
+                'label' => __('Disable podcast namespace injection', 'nodeless-paywall'),
+                'description' => __('Do not auto-inject the podcast namespace. Some other plugins (like Seriously Simple Podcasting) might do this already which then might causes errors.', 'nodeless-paywall'),
             ),
         );
         */
@@ -118,8 +118,8 @@ class NLPW_GeneralPage extends NLPW_SettingsPage
             'tab'     => 'general',
             'field'   => array(
                 'name'  => 'cookie_timeframe_days',
-                'label' => __('Cookie timeframe', 'nodelessio-paywall'),
-                'description' => __('Paid articles are saved in a cookie. How many days should these cookies be valid? (default: 180)', 'nodelessio-paywall'),
+                'label' => __('Cookie timeframe', 'nodeless-paywall'),
+                'description' => __('Paid articles are saved in a cookie. How many days should these cookies be valid? (default: 180)', 'nodeless-paywall'),
             ),
         );
 

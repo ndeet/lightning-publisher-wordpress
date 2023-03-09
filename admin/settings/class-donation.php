@@ -14,10 +14,10 @@ class NLPW_DonationPage extends NLPW_SettingsPage
         // Tabs
         $this->tabs   = array(
             'integrations' => array(
-                'title' => __('Integrations', 'nodelessio-paywall'),
+                'title' => __('Integrations', 'nodeless-paywall'),
             ),
             'widget' => array(
-                'title' => __('Donation Widget', 'nodelessio-paywall'),
+                'title' => __('Donation Widget', 'nodeless-paywall'),
             ),
         );
 
@@ -30,8 +30,8 @@ class NLPW_DonationPage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Donations Settings', 'nodelessio-paywall');
-        $this->menu_title = __('Donations', 'nodelessio-paywall');
+        $this->page_title = __('Donations Settings', 'nodeless-paywall');
+        $this->menu_title = __('Donations', 'nodeless-paywall');
     }
 
     /**
@@ -54,8 +54,8 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'        => 'checkbox_group',
                 'name'        => 'donations_enabled_for',
                 'options'     => $this->get_post_types(),
-                'label'       => __('Auto add donation box', 'nodelessio-paywall'),
-                'description' => __('Enable this option to automatically append the donation block to the end of each post, for selected post type. You can still manually add the donation box with shortcode or Gutenberg block', 'nodelessio-paywall'),
+                'label'       => __('Auto add donation box', 'nodeless-paywall'),
+                'description' => __('Enable this option to automatically append the donation block to the end of each post, for selected post type. You can still manually add the donation box with shortcode or Gutenberg block', 'nodeless-paywall'),
             ),
         );
 
@@ -67,12 +67,12 @@ class NLPW_DonationPage extends NLPW_SettingsPage
         $options   = array();
         $options[] = array(
             'value' => 'above',
-            'label' => __('Above content', 'nodelessio-paywall'),
+            'label' => __('Above content', 'nodeless-paywall'),
         );
 
         $options[] = array(
             'value' => 'below',
-            'label' => __('Below content', 'nodelessio-paywall'),
+            'label' => __('Below content', 'nodeless-paywall'),
         );
 
         $fields[] = array(
@@ -81,8 +81,8 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'        => 'checkbox_group',
                 'name'        => 'donations_autoadd',
                 'options'     => $options,
-                'label'       => __('Placement', 'nodelessio-paywall'),
-                'description' => __('Where to add the donation box, if not selected the donation box will not be inserted automatically', 'nodelessio-paywall'),
+                'label'       => __('Placement', 'nodeless-paywall'),
+                'description' => __('Where to add the donation box, if not selected the donation box will not be inserted automatically', 'nodeless-paywall'),
             ),
         );
 
@@ -93,7 +93,7 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'    => 'number',
                 'name'    => 'widget_amount',
                 'default' => 100000,
-                'label'   => __('Default amount in sats', 'nodelessio-paywall'),
+                'label'   => __('Default amount in sats', 'nodeless-paywall'),
             ),
         );
 
@@ -103,7 +103,7 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_title',
                 'default' => 'Show some love',
-                'label'   => __('Widget title', 'nodelessio-paywall'),
+                'label'   => __('Widget title', 'nodeless-paywall'),
             ),
         );
 
@@ -113,7 +113,7 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_description',
                 'default' => 'Support us by donating sats to keep us going',
-                'label'   => __('Widget description', 'nodelessio-paywall'),
+                'label'   => __('Widget description', 'nodeless-paywall'),
             ),
         );
 
@@ -123,8 +123,8 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'        => 'text',
                 'name'        => 'widget_thankyou',
                 'default'     => 'Woow, you are awesome! Thank you for your support!',
-                'label'       => __('Thank you message', 'nodelessio-paywall'),
-                'description' => __('Will be displayed after payment is processed', 'nodelessio-paywall'),
+                'label'       => __('Thank you message', 'nodeless-paywall'),
+                'description' => __('Will be displayed after payment is processed', 'nodeless-paywall'),
             ),
         );
 
@@ -134,7 +134,7 @@ class NLPW_DonationPage extends NLPW_SettingsPage
                 'type'    => 'text',
                 'name'    => 'widget_button_label',
                 'default' => 'Donate now',
-                'label'   => __('Widget button label', 'nodelessio-paywall'),
+                'label'   => __('Widget button label', 'nodeless-paywall'),
             ),
         );
 

@@ -15,7 +15,7 @@ class NLPW_HelpPage extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Help', 'nodelessio-paywall');
-        $this->menu_title = __('Help', 'nodelessio-paywall');
+        $this->page_title = __('Help', 'nodeless-paywall');
+        $this->menu_title = __('Help', 'nodeless-paywall');
     }
 }

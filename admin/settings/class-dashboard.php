@@ -15,8 +15,8 @@ class NLPW_Dashboard extends NLPW_SettingsPage
     protected function set_translations()
     {
         // Menu Item label
-        $this->page_title = __('Dashboard', 'nodelessio-paywall');
-        $this->menu_title = __('Dashboard', 'nodelessio-paywall');
+        $this->page_title = __('Dashboard', 'nodeless-paywall');
+        $this->menu_title = __('Dashboard', 'nodeless-paywall');
     }
 
     /**
@@ -57,19 +57,19 @@ class NLPW_Dashboard extends NLPW_SettingsPage
                 $node_info = $this->plugin->getLightningClient()->getInfo();
                 $message = sprintf(
                     '%s %s - %s',
-                    __('Connected to:', 'nodelessio-paywall'),
+                    __('Connected to:', 'nodeless-paywall'),
                     $node_info['alias'],
                     $node_info['identity_pubkey']
                 );
             }
             else {
-                $message = __('Wallet not connected', 'nodelessio-paywall');
+                $message = __('Wallet not connected', 'nodeless-paywall');
             }
             return $message;
         } catch (\Exception $e) {
             return sprintf(
                 '%s %s',
-                __('Connection Error', 'nodelessio-paywall'),
+                __('Connection Error', 'nodeless-paywall'),
                 $e
             );
         }

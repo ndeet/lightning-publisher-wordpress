@@ -167,7 +167,7 @@ class NLPW_LnurlpController extends \WP_REST_Controller
         $params = array();
         $params['amount'] = array(
             'default'           => 0,
-            'description'       => __('Invoice amount', 'nodelessio-paywall'),
+            'description'       => __('Invoice amount', 'nodeless-paywall'),
             'type'              => 'integer',
             'sanitize_callback' => 'intval',
             'validate_callback' => 'rest_validate_request_arg',

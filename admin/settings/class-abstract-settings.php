@@ -177,7 +177,7 @@ abstract class NLPW_SettingsPage
 
         // Notice to developer
         if (! file_exists($path) ) {
-            _e('Error: Settings template does not exist', 'nodelessio-paywall');
+            _e('Error: Settings template does not exist', 'nodeless-paywall');
         }
 
         return $path;

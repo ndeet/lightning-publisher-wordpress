@@ -17,7 +17,7 @@
  * Version:           1.0.0
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       nodelessio-paywall
+ * Text Domain:       nodeless-paywall
  * Domain Path:       /languages
  */
 
@@ -31,7 +31,7 @@ if (! defined('WPINC') ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  */
 define('NODELESSIO_PW_VERSION', '1.0.0');
-define('NODELESSIO_PW_PAYWALL_JWT_KEY', hash_hmac('sha256', 'nodelessio-paywall', AUTH_KEY));
+define('NODELESSIO_PW_PAYWALL_JWT_KEY', hash_hmac('sha256', 'nodeless-paywall', AUTH_KEY));
 define('NODELESSIO_PW_PAYWALL_JWT_ALGORITHM', 'HS256');
 define('NODELESSIO_PW_ROOT_PATH', untrailingslashit(plugin_dir_path(__FILE__)));
 define('NODELESSIO_PW_ROOT_URI', untrailingslashit(plugin_dir_url(__FILE__)));

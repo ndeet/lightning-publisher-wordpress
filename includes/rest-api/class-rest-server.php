@@ -162,6 +162,6 @@ class NLPW_RESTServer
      */
     final public function __wakeup()
     {
-        throw new Exception(__('Unserializing instances of this class is forbidden.', 'nodelessio-paywall'));
+        throw new Exception(__('Unserializing instances of this class is forbidden.', 'nodeless-paywall'));
     }
 }
